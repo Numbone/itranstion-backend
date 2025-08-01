@@ -6,11 +6,12 @@ import path from "path";
 
 const runMigrations = async () => {
 	try {
-		const sql = fs.readFileSync(path.resolve(__dirname, "src/db/init.sql"), "utf8");
+		const sql = fs.readFileSync(path.resolve(__dirname, "db/init.sql"), "utf8");
 		await pool.query(sql);
 		logger.info("Таблицы созданы / обновлены");
 	} catch (error) {
 		logger.error("Ошибка при выполнении миграции", error);
+		logger.error(__dirname, error);
 		process.exit(1);
 	}
 };
