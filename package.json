@@ -9,7 +9,7 @@
 	"private": true,
 	"scripts": {
 		"start": "node dist/index.js",
-		"build": "tsc && tsup",
+		"build": "tsc && tsup && mkdir -p dist/db && cp src/db/init.sql dist/db/",
 		"start:dev": "node --import=tsx --watch src/index.ts",
 		"start:prod": "node dist/index.js",
 		"check": "biome check --write",
