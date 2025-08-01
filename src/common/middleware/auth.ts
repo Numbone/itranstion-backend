@@ -4,7 +4,7 @@ import { env } from "../utils/envConfig";
 import { pool } from "../utils/db";
 
 interface JwtPayload {
-  userId: number;
+  id: number;
 }
 
 export const authenticate = async (req: Request, res: Response, next: NextFunction) => {
@@ -18,7 +18,7 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
 
   try {
     const decoded = jwt.verify(token, env.JWT_SECRET) as JwtPayload;
-    const userId = decoded.userId;
+    const userId = decoded.id;
 
     const result = await pool.query("SELECT id, status FROM users WHERE id = $1", [userId]);
     const user = result.rows[0];
