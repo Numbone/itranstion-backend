@@ -8,7 +8,8 @@ import helmet from "helmet";
 import { pino } from "pino";
 import { authRouter } from "./api/auth/authRouter";
 import { authenticate } from "./common/middleware/auth";
-
+import cors from "cors";
+import { env } from "./common/utils/envConfig";
 const logger = pino({ name: "server start" });
 const app: Express = express();
 
@@ -18,7 +19,7 @@ app.set("trust proxy", true);
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
+app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
 app.use(helmet());
 
 // Request logging
