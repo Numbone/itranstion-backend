@@ -17,6 +17,10 @@ const envSchema = z.object({
 	COMMON_RATE_LIMIT_WINDOW_MS: z.coerce.number().int().positive().default(1000),
 
 	DATABASE_URL: z.string().min(1),
+
+	JWT_SECRET: z.string().min(1),
+
+	JWT_EXPIRES_IN: z.coerce.number().int().positive().default(60),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);

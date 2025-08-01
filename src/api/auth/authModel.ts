@@ -18,9 +18,9 @@ export const CreateUserBodySchema = z.object({
 });
 
 export const ModifyUsersSchema = z.object({
-	body: z.object({
-		ids: z.array(z.number()).min(1),
-	}),
+    body: z.object({
+        ids: z.array(z.number()).min(1),
+    }),
 });
 
 export const CreateUserSchema = z.object({
@@ -28,8 +28,8 @@ export const CreateUserSchema = z.object({
 });
 
 export const LoginBodySchema = z.object({
-	email: z.string().email("Invalid email"),
-	password: z.string().min(1, "Password must be at least 1 characters"),
+    email: z.string().email("Invalid email"),
+    password: z.string().min(1, "Password must be at least 1 characters"),
 });
 
 export const LoginUserSchema = z.object({
@@ -38,16 +38,16 @@ export const LoginUserSchema = z.object({
 
 
 export const UserSchema = z.object({
-	id: z.number(),
-	name: z.string(),
-	email: z.string().email(),
-	role: z.string().optional(),
-	status: z.string().optional(),
-	created_at: z.string().optional(),
-	last_login: z.string().nullable().optional(),
+    id: z.number(),
+    name: z.string(),
+    email: z.string().email(),
+    role: z.string().optional(),
+    status: z.string().optional(),
+    created_at: z.string().optional(),
+    last_login: z.string().nullable().optional(),
 });
 
 // Input Validation for 'GET users/:id' endpoint
 export const GetUserSchema = z.object({
-	params: z.object({ id: commonValidations.id }),
+    params: z.object({ id: commonValidations.id }),
 });
